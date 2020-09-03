@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         erb :'/sessions/login'
       end
     
-      post '/login' do 
+    post '/login' do 
         # this route handles the form submission
         # first, finds the user by their username
         user = User.find_by_username(params[:username])
@@ -19,4 +19,12 @@ class SessionsController < ApplicationController
             erb :'/sessions/login'
         end
     end
+
+    delete '/logout' do 
+        #this route logs out the user
+        session.clear
+        redirect "/"
+    end
+
+
 end

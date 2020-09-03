@@ -15,6 +15,19 @@
   </head>
   <body>
     <div class="wrapper">
+      <nav>
+        <a href="/movements">Movements</a>
+        <% if !logged_in? %>
+          <a href="/login">Log In</a>
+          <a href="/users/new">Sign Up</a>
+        <% else %>
+          <a href="/movements/new">New Movement</a>
+          <form method="post" action="/logout" style="display: inline-block;">
+            <input type="hidden" name="_method" value="delete" />
+            <input type="submit" value="Log Out" />
+          </form>
+        <% end %>
+      </nav>
 
         <%= yield %>
 

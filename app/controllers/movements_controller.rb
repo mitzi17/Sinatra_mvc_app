@@ -2,6 +2,8 @@ class MovementsController < ApplicationController
 
   # GET: /movements
   get "/movements" do
+    #this route gets all the Movements and iterates over them in the movements/index.html view
+    @movements = Movement.all
     erb :"/movements/index.html"
   end
 
@@ -16,7 +18,10 @@ class MovementsController < ApplicationController
   end
 
   # GET: /movements/5
+  # this route finds a movement using the id from the params hash
+  # then we can display the details in the show.html.erb view 
   get "/movements/:id" do
+    @movement = Movement.find(params[:id])
     erb :"/movements/show.html"
   end
 

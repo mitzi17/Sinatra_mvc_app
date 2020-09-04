@@ -8,13 +8,25 @@ class MovementsController < ApplicationController
   end
 
   # GET: /movements/new
+  # this route assigns the instance to the @movement variable
+  # then renders the form to create a movement
   get "/movements/new" do
+    @movement = Movement.new
     erb :"/movements/new.html"
+    
   end
 
   # POST: /movements
+  # this route creates a movement from the params hash from the form
+  # if it saves then redirects to movements where index.html view is rendered
+  # if its not saved, the form to create a movement is rendered
   post "/movements" do
+    @movement = current_user.movements.build(date: params[:movement][:date],type: params[:movement][:type],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity],employee_id: params[:movement][:employee_id])
+    if @movement.save
     redirect "/movements"
+    else
+    erb :"/movements/new.html"
+    end
   end
 
   # GET: /movements/5

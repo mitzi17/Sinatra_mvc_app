@@ -5,8 +5,8 @@ class CreateMovements < ActiveRecord::Migration
       t.string :type
       t.string :category
       t.string :destination
-      t.string :box_number
-      t.string :units_quantity
+      t.integer :box_number
+      t.integer :units_quantity
       t.integer :employee_id
 
       t.timestamps null: false

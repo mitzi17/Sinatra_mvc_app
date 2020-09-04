@@ -1,1 +1,33 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Create a movement:</h1>
+
+<form action="post" method="/movements">
+<p>
+<label for="units_quantity">Date</label>
+<input type="text" name="movement[:date]" id="date" />
+</p>
+<p>
+<label for="type">Type</label>
+<input type="text" name="movement[:type]" id="type" />
+</p>
+<p>
+<label for="category">Category</label>
+<input type="text" name="movement[:category]" id="category" />
+</p>
+<p>
+<label for="destination">Destination</label>
+<input type="text" name="movement[:destination]" id="destination" />
+</p>
+<p>
+<label for="box_number">Box #</label>
+<input type="text" name="movement[:box_number]" id="box_number" />
+</p>
+<p>
+<label for="units_quantity">Quantity(# of units)</label>
+<input type="text" name="movement[:units_quantity]" id="units_quantity" />
+</p>
+<p>
+<label for="employee_id">Created by:</label>
+<input type="text" name="movement[:employee_id]" id="employee_id" />
+</p>
+<input type="submit" value="Create movement" />
+</form>

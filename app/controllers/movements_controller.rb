@@ -11,6 +11,7 @@ class MovementsController < ApplicationController
   # this route assigns the instance to the @movement variable
   # then renders the form to create a movement
   get "/movements/new" do
+    redirect_if_not_logged_in
     @movement = Movement.new
     erb :"/movements/new.html"
     
@@ -21,6 +22,7 @@ class MovementsController < ApplicationController
   # if it saves then redirects to movements where index.html view is rendered
   # if its not saved, the form to create a movement is rendered
   post "/movements" do
+    redirect_if_not_logged_in
     @movement = current_user.movements.build(date: params[:movement][:date],type: params[:movement][:type],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity],employee_id: params[:movement][:employee_id])
     if @movement.save
     redirect "/movements"
@@ -40,19 +42,29 @@ class MovementsController < ApplicationController
   # GET: /movements/5/edit
   get "/movements/:id/edit" do
     set_movement
+    redirect_if_not_authorized
     erb :"/movements/edit.html"
   end
 
   # PATCH: /movements/5
   patch "/movements/:id" do
     set_movement
+    redirect_if_not_authorized
+    if @movement.update(date: params[:movement][:date],type: params[:movement][:type],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity],employee_id: params[:movement][:employee_id])
+      flash[:success] = "Movement successfully updated"
+      redirect "/movements/#{@movement.id}"
+    else 
+      erb :"/movements/edit.html"
+    end
     
     
   end
 
   # DELETE: /movements/5/delete
-  delete "/movements/:id/delete" do
+  delete "/movements/:id" do
     set_movement
+    redirect_if_not_authorized
+    @movement.destroy
     redirect "/movements"
   end
 
@@ -65,4 +77,16 @@ class MovementsController < ApplicationController
       redirect "/movements"
     end
   end
+
+  def redirect_if_not_authorized
+    if !authorize_movement(@movement)
+      flash[:error] = "You don't have permission to do that action"
+      redirect "/movements"
+    end
+  end
+
+  def authorize_movement(movement)
+    current_user == movement.user
+  end
+
 end

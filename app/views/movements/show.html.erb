@@ -9,3 +9,13 @@
 <p><%= @movement.units_quantity %></p>
 <p><%= @movement.user.username %></p>
 
+<% if authorize_movement(@movement) %>
+  <div>
+    <a href="/movements/<%= @movement.id %>/edit"><button>Edit</button></a> 
+    <form method="movement" action="/movements/<%= @movement.id %>" style="display: inline-block;">
+      <input type="hidden" name="_method" value="delete" />
+      <input type="submit" value="Delete" />
+    </form>
+  </div>
+<% end %>
+

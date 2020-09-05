@@ -33,22 +33,36 @@ class MovementsController < ApplicationController
   # this route finds a movement using the id from the params hash
   # then we can display the details in the show.html.erb view 
   get "/movements/:id" do
-    @movement = Movement.find(params[:id])
+    set_movement
     erb :"/movements/show.html"
   end
 
   # GET: /movements/5/edit
   get "/movements/:id/edit" do
+    set_movement
     erb :"/movements/edit.html"
   end
 
   # PATCH: /movements/5
   patch "/movements/:id" do
-    redirect "/movements/:id"
+    set_movement
+    
+    
   end
 
   # DELETE: /movements/5/delete
   delete "/movements/:id/delete" do
+    set_movement
     redirect "/movements"
+  end
+
+  private
+
+  def set_movement 
+    @movement = Movement.find_by_id(params[:id])
+    if @movement.nil?
+      flash[:error] = "Couldn't find a Movement with id: #{params[:id]}"
+      redirect "/movements"
+    end
   end
 end

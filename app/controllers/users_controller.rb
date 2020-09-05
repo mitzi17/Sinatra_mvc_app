@@ -13,7 +13,7 @@ class UsersController < ApplicationController
             # if all goes well the user is saved and an session id will be assigned(cookie)
             #will redirect user to the welcome page
             session[:id] = @user.id
-            redirect "homepage"
+            redirect "/"
         else 
             #if user is not saved the sign up page will be rendered again
             erb :'users/new'

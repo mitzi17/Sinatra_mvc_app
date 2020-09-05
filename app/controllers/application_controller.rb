@@ -12,7 +12,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :homepage
+    @movements = Movement.all
+    erb :"/movements/index.html"
+  end
+
+  not_found do
+    flash[:error] = "Whoops! Couldn't find that route"
+    redirect "/movements"
   end
 
   private 
@@ -26,6 +32,13 @@ class ApplicationController < Sinatra::Base
   def logged_in?
     # this method returns true or false
     !!current_user
+  end
+
+  def redirect_if_not_logged_in
+    if !logged_in?
+      flash[:error] = "You must be logged in to view that page"
+      redirect request.referrer || "/login"
+    end
   end
 
 end

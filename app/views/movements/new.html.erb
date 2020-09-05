@@ -1,5 +1,17 @@
 <h1>Create a movement:</h1>
 
+<% if @movement.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @movement.errors.count %> error(s) prohibited this movement from being saved:</h2>
+ 
+    <ul>
+    <% @movement.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <form action="post" method="/movements">
 <p>
 <label for="units_quantity">Date</label>

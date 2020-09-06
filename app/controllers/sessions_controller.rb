@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
       end
     
     post '/login' do 
+        
         # this route handles the form submission
         # first, finds the user by their username
         user = User.find_by_username(params[:username])
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
             redirect "/"
         #if not redirect them to the login page
         else
-            @errors = "Incorrect username or password. Try again."
+            @error = "Incorrect username or password. Try again."
             erb :'/sessions/login'
         end
     end

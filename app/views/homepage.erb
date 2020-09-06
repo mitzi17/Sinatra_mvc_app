@@ -1,2 +1,11 @@
 <h1>INVENTORY MOVEMENTS</h1>
 
+<div class="sidebar">
+      <h3>Environment</h3>
+      <ul>
+        <li><b>Logged In User's Id:</b> <%= session[:id] %></li>
+        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
+        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
+        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
+      </ul>
+    </div>

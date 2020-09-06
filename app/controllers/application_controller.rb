@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     @movements = Movement.all
-    erb :"/movements/index.html"
+    erb :homepage
   end
 
   not_found do

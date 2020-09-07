@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200903233355) do
+ActiveRecord::Schema.define(version: 20200907022008) do
 
   create_table "movements", force: :cascade do |t|
     t.date     "date"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20200903233355) do
     t.string   "destination"
     t.integer  "box_number"
     t.integer  "units_quantity"
-    t.integer  "employee_id"
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200907022008) do
+ActiveRecord::Schema.define(version: 20200907060152) do
 
   create_table "movements", force: :cascade do |t|
     t.date     "date"
-    t.string   "type"
+    t.string   "season"
     t.string   "category"
     t.string   "destination"
     t.integer  "box_number"

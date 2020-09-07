@@ -12,14 +12,14 @@
   </div>
 <% end %>
 
-<form action="post" method="/movements">
+<form method="post" action="/movements">
 <p>
 <label for="units_quantity">Date</label>
 <input type="text" name="movement[:date]" id="date" />
 </p>
 <p>
-<label for="type">Type</label>
-<input type="text" name="movement[:type]" id="type" />
+<label for="season">Season</label>
+<input type="text" name="movement[:season]" id="season" />
 </p>
 <p>
 <label for="category">Category</label>
@@ -27,7 +27,7 @@
 </p>
 <p>
 <label for="destination">Destination</label>
-<input type="text" name="movement[:destination]" id="destination" />
+<input type="text" name="movement[:destination]" id="destination" value="<%= @movement.destination %>" />
 </p>
 <p>
 <label for="box_number">Box #</label>
@@ -38,8 +38,6 @@
 <input type="text" name="movement[:units_quantity]" id="units_quantity" />
 </p>
 <p>
-<label for="employee_id">Created by:</label>
-<input type="text" name="movement[:employee_id]" id="employee_id" />
-</p>
+
 <input type="submit" value="Create movement" />
 </form>

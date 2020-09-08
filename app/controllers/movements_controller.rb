@@ -7,7 +7,7 @@ class MovementsController < ApplicationController
     erb :"/movements/index.html"
   end
 
-  # GET: /movements/new
+  # GET: /movements/new -> new
   # this route assigns the instance to the @movement variable
   # then renders the form to create a movement
   get "/movements/new" do
@@ -17,7 +17,7 @@ class MovementsController < ApplicationController
     
   end
 
-  # POST: /movements
+  # POST: /movements -> create
   # this route creates a movement from the params hash from the form
   # if it saves then redirects to movements where index.html view is rendered
   # if its not saved, the form to create a movement is rendered
@@ -25,6 +25,7 @@ class MovementsController < ApplicationController
     
     redirect_if_not_logged_in
     @movement = current_user.movements.build(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity],user_id: params[:movement][:user_id])
+    
     if @movement.save
     redirect "/movements"
     else
@@ -32,7 +33,7 @@ class MovementsController < ApplicationController
     end
   end
 
-  # GET: /movements/5
+  # GET: /movements/5 -> show
   # this route finds a movement using the id from the params hash
   # then we can display the details in the show.html.erb view 
   get "/movements/:id" do
@@ -40,14 +41,14 @@ class MovementsController < ApplicationController
     erb :"/movements/show.html"
   end
 
-  # GET: /movements/5/edit
+  # GET: /movements/5/edit -> edit
   get "/movements/:id/edit" do
     set_movement
     redirect_if_not_authorized
     erb :"/movements/edit.html"
   end
 
-  # PATCH: /movements/5
+  # PATCH: /movements/5 -> update
   patch "/movements/:id" do
     set_movement
     redirect_if_not_authorized
@@ -61,7 +62,7 @@ class MovementsController < ApplicationController
     
   end
 
-  # DELETE: /movements/5/delete
+  # DELETE: /movements/5/delete -> delete
   delete "/movements/:id" do
     set_movement
     redirect_if_not_authorized

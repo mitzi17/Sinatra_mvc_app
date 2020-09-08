@@ -11,33 +11,32 @@
     </ul>
   </div>
 <% end %>
-
 <form method="post" action="/movements">
-<p>
-<label for="units_quantity">Date</label>
-<input type="text" name="movement[:date]" id="date" />
-</p>
-<p>
-<label for="season">Season</label>
-<input type="text" name="movement[:season]" id="season" />
-</p>
-<p>
-<label for="category">Category</label>
-<input type="text" name="movement[:category]" id="category" />
-</p>
-<p>
-<label for="destination">Destination</label>
-<input type="text" name="movement[:destination]" id="destination" value="<%= @movement.destination %>" />
-</p>
-<p>
-<label for="box_number">Box #</label>
-<input type="text" name="movement[:box_number]" id="box_number" />
-</p>
-<p>
-<label for="units_quantity">Quantity(# of units)</label>
-<input type="text" name="movement[:units_quantity]" id="units_quantity" />
-</p>
-<p>
+  <p>
+    <div><label for="date">DATE:</label></div>
+    <input id="date" type="text" name="movement[date]" value="<%= @movement.date %>" />
+  </p>
+  <p>
+    <div><label for="season">SEASON:</label></div>
+    <input id="season" type="text" name="movement[season]" value="<%= @movement.season %>" />
+  </p>
+  <p>
+    <div><label for="category">CATEGORY:</label></div>
+    <input id="category" type="text" name="movement[category]" value="<%= @movement.category %>" />
+  </p>
+  <p>
+    <div><label for="destination">DESTINATION:</label></div>
+    <input id="destination" type="text" name="movement[destination]" value="<%= @movement.destination %>" />
+  </p>
+  <p>
+    <div><label for="box_number">BOX #:</label></div>
+    <input id="box_number" type="text" name="movement[box_number]" value="<%= @movement.box_number %>" />
+  </p>
+  <p>
+    <div><label for="units_quantity">QUANTITY:</label></div>
+    <input id="units_quantity" type="text" name="movement[units_quantity]" value="<%= @movement.units_quantity %>" />
+  </p>
+  
 
 <input type="submit" value="Create movement" />
 </form>

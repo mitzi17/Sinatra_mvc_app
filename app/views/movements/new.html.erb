@@ -1,4 +1,4 @@
-<h1>Create a movement:</h1>
+<h1>Create a Movement:</h1>
 
 <% if @movement.errors.any? %>
   <div id="error_explanation">
@@ -36,6 +36,7 @@
     <div><label for="units_quantity">QUANTITY:</label></div>
     <input id="units_quantity" type="text" name="movement[units_quantity]" value="<%= @movement.units_quantity %>" />
   </p>
+ 
   
 
 <input type="submit" value="Create movement" />

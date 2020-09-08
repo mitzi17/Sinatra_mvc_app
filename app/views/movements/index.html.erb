@@ -1,5 +1,5 @@
 <h1>All Movements</h1>
-<p>Box # /  Destination </p>
+<p>Date / Destination /  Box # </p>
 <% @movements.each do |movement| %>
-<p><a href="/movements/<%= movement.id %>"><%= movement.box_number %> <%="   "%> <%= movement.destination %></a></p>
+<p><a href="/movements/<%= movement.id %>"> <%= movement.date %> / <%= movement.destination %> / <%= movement.box_number %> </a></p>
 <% end %>

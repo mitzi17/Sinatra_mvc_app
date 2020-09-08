@@ -1,6 +1,6 @@
 class MovementsController < ApplicationController
 
-  # GET: /movements
+  # GET: /movements -> index
   get "/movements" do
     #this route gets all the Movements and iterates over them in the movements/index.html view
     @movements = Movement.all
@@ -24,7 +24,7 @@ class MovementsController < ApplicationController
   post "/movements" do
     
     redirect_if_not_logged_in
-    @movement = current_user.movements.build(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity],user_id: params[:movement][:user_id])
+    @movement = current_user.movements.build(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity])
     
     if @movement.save
     redirect "/movements"
@@ -52,7 +52,7 @@ class MovementsController < ApplicationController
   patch "/movements/:id" do
     set_movement
     redirect_if_not_authorized
-    if @movement.update(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity],user_id: params[:movement][:user_id])
+    if @movement.update(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity])
       flash[:success] = "Movement successfully updated"
       redirect "/movements/#{@movement.id}"
     else 
@@ -81,14 +81,17 @@ class MovementsController < ApplicationController
   end
 
   def redirect_if_not_authorized
+    redirect_if_not_logged_in
     if !authorize_movement(@movement)
       flash[:error] = "You don't have permission to do that action"
       redirect "/movements"
     end
   end
 
+  #this method will return true or false
   def authorize_movement(movement)
     current_user == movement.user
   end
+  
 
 end

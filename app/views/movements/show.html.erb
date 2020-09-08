@@ -1,15 +1,16 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>MOVEMENT DETAILS</h1>
 
-<h1><%= @movement.destination %></h1>
+<p>Date: <%= @movement.date %></p>
 
-<p><%= @movement.date %></p>
-<p><%= @movement.season %></p>
-<p><%= @movement.category %></p>
-<p><%= @movement.box_number %></p>
-<p><%= @movement.units_quantity %></p>
-<p><%= @movement.user_id %></p>
+<p>Destination: <%= @movement.destination %></p>
+<p>Season: <%= @movement.season %></p>
+<p>Category: <%= @movement.category %></p>
+<p>Box Number: <%= @movement.box_number %></p>
+<p>Quantity: <%= @movement.units_quantity %></p>
 
-<% if authorize_movement(@movement) %>
+
+
+<% if logged_in? && authorize_movement(@movement) %>
   <div>
     <a href="/movements/<%= @movement.id %>/edit"><button>Edit</button></a> 
     <form method="post" action="/movements/<%= @movement.id %>" style="display: inline-block;">

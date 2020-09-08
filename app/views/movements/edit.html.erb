@@ -1,1 +1,43 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit movement:</h1>
+
+<% if @movement.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @movement.errors.count %> error(s) prohibited this movement from being saved:</h2>
+ 
+    <ul>
+    <% @movement.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<form method="post" action="/movements/ <%= @movement.id %> " >
+<input type="hidden" name="_method" value="patch" />
+  <p>
+    <div><label for="date">DATE:</label></div>
+    <input id="date" type="text" name="movement[date]" value="<%= @movement.date %>" />
+  </p>
+  <p>
+    <div><label for="season">SEASON:</label></div>
+    <input id="season" type="text" name="movement[season]" value="<%= @movement.season %>" />
+  </p>
+  <p>
+    <div><label for="category">CATEGORY:</label></div>
+    <input id="category" type="text" name="movement[category]" value="<%= @movement.category %>" />
+  </p>
+  <p>
+    <div><label for="destination">DESTINATION:</label></div>
+    <input id="destination" type="text" name="movement[destination]" value="<%= @movement.destination %>" />
+  </p>
+  <p>
+    <div><label for="box_number">BOX #:</label></div>
+    <input id="box_number" type="text" name="movement[box_number]" value="<%= @movement.box_number %>" />
+  </p>
+  <p>
+    <div><label for="units_quantity">QUANTITY:</label></div>
+    <input id="units_quantity" type="text" name="movement[units_quantity]" value="<%= @movement.units_quantity %>" />
+  </p>
+  
+
+<input type="submit" value="Update movement" />
+</form>

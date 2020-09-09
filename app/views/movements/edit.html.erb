@@ -14,20 +14,31 @@
 <form method="post" action="/movements/ <%= @movement.id %> " >
 <input type="hidden" name="_method" value="patch" />
   <p>
-    <div><label for="date">DATE:</label></div>
-    <input id="date" type="text" name="movement[date]" value="<%= @movement.date %>" />
+  <div><label for="date">DATE:</label></div>
+    <input id="date" type="date" name="movement[date]" placeholder="dd-mm-yyyy" value="<%= @movement.date %>" >
   </p>
   <p>
     <div><label for="season">SEASON:</label></div>
-    <input id="season" type="text" name="movement[season]" value="<%= @movement.season %>" />
+    <select id="season" name="movement[season]" value="<%= @movement.season %>" >
+      <option value="Summer2020">Summer 2020</option>
+      <option value="Winter2020">Winter 2020</option>
+    </select>
   </p>
   <p>
     <div><label for="category">CATEGORY:</label></div>
-    <input id="category" type="text" name="movement[category]" value="<%= @movement.category %>" />
+    <select id="category" name="movement[category]" value="<%= @movement.category %>" >
+      <option value="Inbound">Inbound</option>
+      <option value="Outbound">Outbound</option>
+    </select>
   </p>
   <p>
     <div><label for="destination">DESTINATION:</label></div>
-    <input id="destination" type="text" name="movement[destination]" value="<%= @movement.destination %>" />
+    <select id="destination" name="movement[destination]" value="<%= @movement.destination %>" >
+    <option value="Warehouse">Warehouse</option>
+    <option value="ARC-Store2075">ARC - Store 2075</option>
+    <option value="PSD-Store3088">PSD - Store 2075</option>
+    <option value="GLD-Store1200">GLD - Store 2075</option>
+    </select>
   </p>
   <p>
     <div><label for="box_number">BOX #:</label></div>
@@ -35,8 +46,9 @@
   </p>
   <p>
     <div><label for="units_quantity">QUANTITY:</label></div>
-    <input id="units_quantity" type="text" name="movement[units_quantity]" value="<%= @movement.units_quantity %>" />
+    <input id="units_quantity" type="text" name="movement[units_quantity]" placeholder="# of units" value="<%= @movement.units_quantity %>" />
   </p>
+    
   
 
 <input type="submit" value="Update Movement" />

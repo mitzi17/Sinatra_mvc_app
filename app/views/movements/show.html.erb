@@ -7,6 +7,7 @@
 <p>Category: <%= @movement.category %></p>
 <p>Box Number: <%= @movement.box_number %></p>
 <p>Quantity: <%= @movement.units_quantity %></p>
+<p>Created by: <%= @movement.user.username %></p>
 
 
 
@@ -18,6 +19,10 @@
       <input type="submit" value="Delete" />
     </form>
   </div>
-  <% end %>
+
+
+
+<% end %>
+  
 
 

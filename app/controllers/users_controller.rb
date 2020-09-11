@@ -21,4 +21,17 @@ class UsersController < ApplicationController
         end
     end
 
+    get "/users/edit" do
+        @users = User.all
+        erb :'/users/edit'
+    end
+
+    delete "/users/:id" do
+        user.destroy
+        redirect "/users/edit"
+      end
+
+
+
+
   end

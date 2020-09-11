@@ -13,11 +13,12 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: rgb(1, 38, 51);
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
   }
+
 
   .error {
     color: red;
@@ -28,7 +29,7 @@
   }
 
   .wrapper {
-    background: #fff;
+    background: rgb(253, 251, 251);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);

@@ -21,6 +21,13 @@
         <% if !logged_in? %>
           <a href="/login">Log In</a>
           <a href="/users/new">Sign Up</a>
+          <% elsif logged_in? && manager_user(current_user) %>
+          <a href="/movements/new">New Movement</a>
+          <a href="/users/edit">Users</a>
+          <form method="post" action="/logout" style="display: inline-block;">
+            <input type="hidden" name="_method" value="delete" />
+            <input type="submit" value="Log Out" />
+          </form>
         <% else %>
           <a href="/movements/new">New Movement</a>
           <form method="post" action="/logout" style="display: inline-block;">

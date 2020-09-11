@@ -5,13 +5,19 @@
   <div class="sidebar">
       <h3>Welcome, <%= current_user.username %> </h3>
       <ul>
+      <% if manager_user(current_user) %>
+      <li><b>Logged In Manager Id:</b> <%= session[:id] %></li>
+      </ul>
+      <% else %>
+      <ul>
         <li><b>Logged In User's Id:</b> <%= session[:id] %></li>
       </ul>
+      <% end %>
   </div>
 
 <% else %>
     
-  <h3>Welcome, please sign in or sign up to start using the app.</h3>
+  <h3>Welcome, please sign in or sign up to create, update, or remove any movements.</h3>
     
 <% end %>
   

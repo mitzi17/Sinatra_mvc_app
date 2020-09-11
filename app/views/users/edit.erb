@@ -1,0 +1,10 @@
+<h1>Manage Users</h1>
+
+<% @users.each do |user| %>
+<ul><li><%= user.username %> </li></ul>
+
+<% <form method="post" action="/users/<%= user.id %>" style="display: inline-block;"> %>
+<% <input type="hidden" name="_method" value="delete" /> %>
+      <% <input type="submit" value="Delete User" /> %>
+<% </form> %>
+<% end %>

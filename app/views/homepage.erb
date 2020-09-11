@@ -2,15 +2,17 @@
 
 <% if logged_in? %>
 
-<div class="sidebar">
+  <div class="sidebar">
       <h3>Welcome, <%= current_user.username %> </h3>
       <ul>
         <li><b>Logged In User's Id:</b> <%= session[:id] %></li>
       </ul>
-    </div>
+  </div>
 
-    <% else %>
+<% else %>
     
-    <h3>Welcome, please sign in or sign up to start using the app.</h3>
+  <h3>Welcome, please sign in or sign up to start using the app.</h3>
     
-    <% end %>
+<% end %>
+  
+<img src="https://www.techjockey.com/blog/wp-content/uploads/2019/02/Inventory-Management-Software_feature.png" alt="Inventory" style="width:960px;height:400px;">

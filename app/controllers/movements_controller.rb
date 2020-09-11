@@ -38,14 +38,14 @@ class MovementsController < ApplicationController
   # then we can display the details in the show.html.erb view 
   get "/movements/:id" do
     set_movement
-    erb :"/movements/show.html"
+    erb :"/movements/show.html"  
   end
 
   # GET: /movements/5/edit -> edit
   get "/movements/:id/edit" do
     set_movement
     redirect_if_not_authorized
-    erb :"/movements/edit.html"
+    erb :"/movements/edit.html" 
   end
 
   # PATCH: /movements/5 -> update
@@ -54,12 +54,12 @@ class MovementsController < ApplicationController
     redirect_if_not_authorized
     if @movement.update(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity])
       flash[:success] = "Movement successfully updated"
-      redirect "/movements/#{@movement.id}"
+      
+      redirect "/movements/#{@movement.id}" 
     else 
       erb :"/movements/edit.html"
+    
     end
-    
-    
   end
 
   # DELETE: /movements/5/delete -> delete
@@ -82,7 +82,7 @@ class MovementsController < ApplicationController
 
   def redirect_if_not_authorized
     redirect_if_not_logged_in
-    if !authorize_movement(@movement)
+    if !authorize_movement(@movement) && !manager_user(current_user)
       flash[:error] = "You don't have permission to do that action"
       redirect "/movements"
     end
@@ -90,8 +90,14 @@ class MovementsController < ApplicationController
 
   #this method will return true or false
   def authorize_movement(movement)
-    current_user == movement.user
+    current_user  == movement.user
   end
+
+  
+
+  
+
+ 
   
 
 end

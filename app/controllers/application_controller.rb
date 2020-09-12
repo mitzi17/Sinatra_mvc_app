@@ -23,14 +23,11 @@ class ApplicationController < Sinatra::Base
 
   private 
 
-  def current_user 
-    # this method returns the currently logged in user if there is one, and nil if there isn't
-    # allows to add conditional logic in the view to display different options to logged in users
-    User.find_by_id(session[:id])
+  def current_user
+    User.find_by_id(session[:id]) 
   end
 
   def logged_in?
-    # this method returns true or false
     !!current_user
   end
 
@@ -39,6 +36,10 @@ class ApplicationController < Sinatra::Base
       flash[:error] = "You must be logged in to view that page"
       redirect request.referrer || "/login"
     end
+  end
+
+  def manager_user(current_user)
+    current_user.username.include?("mg")
   end
 
 end

@@ -2,30 +2,21 @@ class MovementsController < ApplicationController
 
   # GET: /movements -> index
   get "/movements" do
-    #this route gets all the Movements and iterates over them in the movements/index.html view
     @movements = Movement.all
     erb :"/movements/index.html"
   end
 
   # GET: /movements/new -> new
-  # this route assigns the instance to the @movement variable
-  # then renders the form to create a movement
   get "/movements/new" do
     redirect_if_not_logged_in
     @movement = Movement.new
     erb :"/movements/new.html"
-    
   end
 
   # POST: /movements -> create
-  # this route creates a movement from the params hash from the form
-  # if it saves then redirects to movements where index.html view is rendered
-  # if its not saved, the form to create a movement is rendered
   post "/movements" do
-    
     redirect_if_not_logged_in
     @movement = current_user.movements.build(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity])
-    
     if @movement.save
     redirect "/movements"
     else
@@ -34,8 +25,6 @@ class MovementsController < ApplicationController
   end
 
   # GET: /movements/5 -> show
-  # this route finds a movement using the id from the params hash
-  # then we can display the details in the show.html.erb view 
   get "/movements/:id" do
     set_movement
     erb :"/movements/show.html"  
@@ -54,11 +43,9 @@ class MovementsController < ApplicationController
     redirect_if_not_authorized
     if @movement.update(date: params[:movement][:date],season: params[:movement][:season],category: params[:movement][:category],destination: params[:movement][:destination],box_number: params[:movement][:box_number],units_quantity: params[:movement][:units_quantity])
       flash[:success] = "Movement successfully updated"
-      
       redirect "/movements/#{@movement.id}" 
     else 
       erb :"/movements/edit.html"
-    
     end
   end
 
@@ -87,8 +74,7 @@ class MovementsController < ApplicationController
       redirect "/movements"
     end
   end
-
-  #this method will return true or false
+  
   def authorize_movement(movement)
     current_user  == movement.user
   end

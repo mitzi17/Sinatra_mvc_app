@@ -24,3 +24,5 @@ This is a student project, meant for demo purposes. Suggestions and fixes are we
 
 
 LICENSE LINK
+
+https://github.com/mitzi17/Sinatra_mvc_app/blob/master/LICENSE.md

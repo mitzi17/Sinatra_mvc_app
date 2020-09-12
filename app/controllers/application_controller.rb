@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
   end
 
   def manager_user(current_user)
-    current_user.username.include?("mg")
+    current_user.username.include?("mgr")
   end
 
 end

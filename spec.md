@@ -14,7 +14,7 @@ Specs:
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
         Movements_controller contains routes for creating, reading, updating, and destroying movements
 - [x] Ensure that users can't modify content created by other users
-        Application_controller contains private methods that prohibit users from modifying content created by other users (added functionality where some users, "managers", are able to edit and delete other user's content)
+        Application_controller contains private methods that prohibit users from modifying content created by other users (added functionality where some users, "managers", are able to edit and delete other user's content, to do this, you would have to create an account with a username containing "mgr")
 - [x] Include user input validations
         Added validations and uniqueness to both models
 - [x] BONUS - not required - Display validation failures to user with error message

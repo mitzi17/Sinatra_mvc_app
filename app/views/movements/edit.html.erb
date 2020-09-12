@@ -11,6 +11,7 @@
     </ul>
   </div>
 <% end %>
+
 <form method="post" action="/movements/ <%= @movement.id %> " >
 <input type="hidden" name="_method" value="patch" />
   <p>
@@ -49,7 +50,6 @@
     <input id="units_quantity" type="text" name="movement[units_quantity]" placeholder="# of units" value="<%= @movement.units_quantity %>" />
   </p>
     
-  
+    <input type="submit" value="Update Movement" />
 
-<input type="submit" value="Update Movement" />
 </form>

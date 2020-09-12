@@ -11,6 +11,7 @@
     </ul>
   </div>
 <% end %>
+
 <form method="post" action="/movements">
   <p>
     <div><label for="date">DATE:</label></div>
@@ -48,7 +49,6 @@
     <input id="units_quantity" type="text" name="movement[units_quantity]" placeholder="# of units" value="<%= @movement.units_quantity %>" />
   </p>
  
-  
+  <input type="submit" value="Create movement" />
 
-<input type="submit" value="Create movement" />
 </form>

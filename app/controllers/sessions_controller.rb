@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
     delete '/logout' do 
         session.clear
+        flash[:success] = "You are now logged out."
         redirect "/"
     end
 end

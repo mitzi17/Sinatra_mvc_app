@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do
-    flash[:error] = "Whoops! Couldn't find that route"
+    flash[:error] = "Couldn't find that route."
     redirect "/movements"
   end
 
@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
   def redirect_if_not_logged_in
     if !logged_in?
       flash[:error] = "You must be logged in to view that page"
-      redirect request.referrer || "/login"
+      redirect "/login"
     end
   end
 
